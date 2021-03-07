@@ -15,42 +15,34 @@ import useStyles from './styles';
 const List = () => {
 
   const classes = useStyles();
-  const { deleteTransaction } = useContext(ExpenseTrackerContext);
-
-  console.log(deleteTransaction);
-
-  const transactions = [
-    {id: 1, type: "Income", category: "business", amount: 50, date: new Date().toLocaleString()},
-    {id: 2, type: "Expense", category: "pets", amount: 50, date: new Date().toLocaleString()},
-    {id: 3, type: "Income", category: "salaries", amount: 350, date: new Date().toLocaleString()}
-  ];
+  const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
 
   return (
     <MUIList dense={false} className={classes.list}>
-      {transactions.map(transiction => (
+      {transactions.map(transaction => (
         <Slide
           direction="down"
           in
           mountOnEnter
           unmountOnExit
-          key={transiction.id}
+          key={transaction.id}
         >
           <ListItem>
             <ListItemAvatar>
               <Avatar
-                className={transiction.type === "Income" ? classes.avatarIncome : classes.avatarExpense}>
+                className={transaction.type === "Income" ? classes.avatarIncome : classes.avatarExpense}>
                 <MoneyOff />
               </Avatar>
             </ListItemAvatar>
             <ListItemText
-              primary={transiction.category}
-              secondary={`$${transiction.amount} - ${transiction.date}`}
+              primary={transaction.category}
+              secondary={`$${transaction.amount} - ${transaction.date}`}
             />
             <ListItemSecondaryAction >
               <IconButton
                 edge="end"
                 aria-label="delete"
-                onClick={() => {}}
+                onClick={() => deleteTransaction(transaction.id)}
               >
                 <Delete />
               </IconButton>

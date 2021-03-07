@@ -24,13 +24,12 @@ export const Provider = ({ children }) => {
     })
   }
 
-  console.log(transactions);
-
   return (
     <ExpenseTrackerContext.Provider value={{
       createTransaction,
       deleteTransaction,
-    }} >
+      transactions
+    }}>
       {children}
     </ExpenseTrackerContext.Provider>
   )
