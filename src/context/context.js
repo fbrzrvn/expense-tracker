@@ -1,5 +1,6 @@
 import React, { useReducer, createContext } from 'react';
 import contextReducer from './contextReducer';
+import { CREATE, DELETE } from '../constants/actionTypes';
 
 const initialState = [];
 
@@ -9,8 +10,25 @@ export const Provider = ({ children }) => {
 
   const [transactions, dispatch] = useReducer(contextReducer, initialState);
 
+  const createTransaction = transaction => {
+    dispatch({
+      type: CREATE,
+      payload: transaction
+    })
+  }
+
+  const deleteTransaction = id => {
+    dispatch({
+      type: DELETE,
+      payload: id
+    })
+  }
+
   return (
-    <ExpenseTrackerContext.Provider value={{ appName: "expense tracker" }} >
+    <ExpenseTrackerContext.Provider value={{
+      createTransaction,
+      deleteTransaction
+    }} >
       {children}
     </ExpenseTrackerContext.Provider>
   )
