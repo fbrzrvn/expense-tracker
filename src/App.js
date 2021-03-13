@@ -9,17 +9,15 @@ const App = () => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.grid} >
-      <Grid container align="center" justify="center" spacing={3,0} >
-        <Grid item className={ classes.main } xs={12} sm={6} >
+    <Grid container className={classes.grid} spacing={0} alignItems="center" justify="center">
+      <Grid container justify="space-around">
+        <Grid item className={classes.main} xs={12} sm={10} md={4}>
           <Main />
         </Grid>
-      </Grid>
-      <Grid container justify="space-around" >
-        <Grid item className={classes.mobile} xs={12} sm={4} >
+        <Grid item className={classes.mobile} xs={12} sm={5} md={3}>
           <Deteils title="Income" />
         </Grid>
-        <Grid item className={classes.last} xs={12} sm={4} >
+        <Grid item className={classes.last} xs={12} sm={5} md={3}>
           <Deteils title="Expense" />
         </Grid>
       </Grid>

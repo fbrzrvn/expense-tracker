@@ -1,25 +1,27 @@
 import React from 'react';
 import { Card, CardHeader, CardContent, Typography, Grid, Divider } from '@material-ui/core';
-
+import Form from './Form/Form';
+import List from './List/List';
 import useStyles from './styles';
 
 const Main = () => {
 
   const classes = useStyles();
+
   return (
     <Card className={classes.root}>
-      <CardHeader />
+      <CardHeader title="Expense Tracker" />
       <CardContent>
-        <Typography align="center" variant="h5">Total Balance $0.00</Typography>
+        <Typography variant="h5">Total Balance $0.00</Typography>
         <Typography variant="subtitle1" className={classes.subtitle}>
-          <Divider />
-          {/* <Form /> */}
+          <Divider className={classes.divider} />
+          <Form />
         </Typography>
       </CardContent>
       <CardContent className={classes.cardContent}>
         <Grid container spacing={2} >
           <Grid item xs={12} >
-           {/* <List /> */}
+           <List />
           </Grid>
         </Grid>
       </CardContent>

@@ -1,7 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Directions } from '@material-ui/icons';
-import { Autocomplete } from '@material-ui/lab';
-import { findByLabelText } from '@testing-library/dom';
 
 export default makeStyles((theme) => ({
   main: {
@@ -10,8 +7,8 @@ export default makeStyles((theme) => ({
     },
   },
   mobile: {
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: '5%',
+    [theme.breakpoints.down('xs')]: {
+      margin: '5% 0',
     },
   },
   last: {
