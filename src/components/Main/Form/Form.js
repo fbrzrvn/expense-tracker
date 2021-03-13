@@ -11,6 +11,7 @@ import {
   MenuItem } from '@material-ui/core';
 import { ExpenseTrackerContext } from '../../../context/context';
 import { v4 as uuidv4 } from 'uuid';
+import { incomeCategories, expenseCategories } from '../../../constants/categories';
 import useStyles from './styles';
 
 const initialState = {
@@ -35,6 +36,8 @@ const Form = () => {
     createTransaction(transaction);
     setFormData(initialState);
   }
+
+  const selectedCategory = formData.type === 'Income' ? incomeCategories : expenseCategories;
 
   return (
     <Grid container spacing={2} >
@@ -65,6 +68,7 @@ const Form = () => {
             value={formData.category}
             onChange={e => setFormData({...formData, category: e.target.value})}
           >
+            { selectedCategory.map((c, index) => <MenuItem key={index} value={c.type}>{c.type}</MenuItem>) }
           </Select>
         </FormControl>
       </Grid>
