@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import formatDate from '../../../helpers/formatDate';
 import {
   TextField,
   Typography,
@@ -16,14 +17,14 @@ const initialState = {
   amount: '',
   category: '',
   type: 'Income',
-  date: new Date().toLocaleString(),
+  date: formatDate(new Date()),
 }
 
 const Form = () => {
 
-  const classes = useStyles();
   const { createTransaction } = useContext(ExpenseTrackerContext);
   const [formData, setFormData] = useState(initialState);
+  const classes = useStyles();
 
   const addTransaction = () => {
     const transaction = {
@@ -64,15 +65,12 @@ const Form = () => {
             value={formData.category}
             onChange={e => setFormData({...formData, category: e.target.value})}
           >
-            <MenuItem value="business">Business</MenuItem>
-            <MenuItem value="salaries">Salaries</MenuItem>
-            <MenuItem value="pets">Pets</MenuItem>
           </Select>
         </FormControl>
       </Grid>
       <Grid item xs={6}>
         <TextField
-          type="number"
+          type="text"
           label="Amount"
           fullWidth
           value={formData.amount}
@@ -85,7 +83,7 @@ const Form = () => {
           label="Date"
           fullWidth
           value={formData.date}
-          onChange={e => setFormData({...formData, date: e.target.value})}
+          onChange={e => setFormData({...formData, date: formatDate(e.target.value)})}
         />
       </Grid>
       <Button
