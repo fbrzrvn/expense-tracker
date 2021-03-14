@@ -24,11 +24,16 @@ export const Provider = ({ children }) => {
     })
   }
 
+  const balance = transactions.reduce((acc, item) => {
+    return item.type === 'Expense' ? acc -= item.amount : acc += item.amount
+  }, 0)
+
   return (
     <ExpenseTrackerContext.Provider value={{
       createTransaction,
       deleteTransaction,
-      transactions
+      transactions,
+      balance
     }}>
       {children}
     </ExpenseTrackerContext.Provider>
