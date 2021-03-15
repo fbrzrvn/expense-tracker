@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import formatDate from '../../../helpers/formatDate';
 import {
   TextField,
   Typography,
@@ -9,9 +8,11 @@ import {
   InputLabel,
   Select,
   MenuItem } from '@material-ui/core';
+import formatDate from '../../../helpers/formatDate';
+import Snackbar from '../../Snackbar/Snackbar';
 import { ExpenseTrackerContext } from '../../../context/context';
-import { v4 as uuidv4 } from 'uuid';
 import { incomeCategories, expenseCategories } from '../../../constants/categories';
+import { v4 as uuidv4 } from 'uuid';
 import useStyles from './styles';
 
 const initialState = {
@@ -25,6 +26,7 @@ const Form = () => {
 
   const { createTransaction } = useContext(ExpenseTrackerContext);
   const [formData, setFormData] = useState(initialState);
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
 
   const addTransaction = () => {
@@ -33,6 +35,8 @@ const Form = () => {
       amount: Number(formData.amount),
       id: uuidv4()
     };
+    if (!transaction.amount || !transaction.category) return;
+    setOpen(true);
     createTransaction(transaction);
     setFormData(initialState);
   }
@@ -41,6 +45,7 @@ const Form = () => {
 
   return (
     <Grid container spacing={2} >
+      <Snackbar open={open} setOpen={setOpen} message="Transaction successfully created." type="success" />
       <Grid item xs={12} >
         <Typography
           align="center"

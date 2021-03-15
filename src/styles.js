@@ -18,6 +18,7 @@ export default makeStyles((theme) => ({
     },
   },
   grid: {
+    paddingTop: '100px',
     '& > *': {
       margin: theme.spacing(2),
     },
