@@ -1,16 +1,16 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+
 import useStyles from './styles';
 
 const CustomizedSnackbar = ({ open, setOpen, message, type }) => {
-
   const classes = useStyles();
 
   const handleClose = reason => {
     if (reason === 'clickAway') return;
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <div className={classes.root}>
@@ -24,12 +24,13 @@ const CustomizedSnackbar = ({ open, setOpen, message, type }) => {
           onClose={handleClose}
           severity={type}
           elevation={6}
-          variant="filled">
+          variant="filled"
+        >
           {message}
         </MuiAlert>
       </Snackbar>
     </div>
-  )
-}
+  );
+};
 
 export default CustomizedSnackbar;
