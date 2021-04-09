@@ -1,14 +1,11 @@
-//? Reducer => a function that takes in the old state, and an action => new state..
 import { CREATE, DELETE } from '../constants/actionTypes';
 
 const contextReducer = (state, action) => {
-
   let transactions;
 
-  switch(action.type) {
-
+  switch (action.type) {
     case CREATE:
-      transactions = [action.payload, ...state]
+      transactions = [action.payload, ...state];
       localStorage.setItem('transactions', JSON.stringify(transactions));
       return transactions;
 
@@ -20,6 +17,6 @@ const contextReducer = (state, action) => {
     default:
       return state;
   }
-}
+};
 
 export default contextReducer;

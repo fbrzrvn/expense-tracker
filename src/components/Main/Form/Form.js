@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import {
   TextField,
   Typography,
@@ -7,12 +8,17 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem } from '@material-ui/core';
+  MenuItem,
+} from '@material-ui/core';
+
+import { ExpenseTrackerContext } from '../../../context/context';
+import {
+  incomeCategories,
+  expenseCategories,
+} from '../../../constants/categories';
 import formatDate from '../../../helpers/formatDate';
 import Snackbar from '../../Snackbar/Snackbar';
-import { ExpenseTrackerContext } from '../../../context/context';
-import { incomeCategories, expenseCategories } from '../../../constants/categories';
-import { v4 as uuidv4 } from 'uuid';
+
 import useStyles from './styles';
 
 const initialState = {
@@ -20,10 +26,9 @@ const initialState = {
   category: '',
   type: 'Income',
   date: formatDate(new Date()),
-}
+};
 
 const Form = () => {
-
   const { createTransaction } = useContext(ExpenseTrackerContext);
   const [formData, setFormData] = useState(initialState);
   const [open, setOpen] = useState(false);
@@ -33,33 +38,38 @@ const Form = () => {
     const transaction = {
       ...formData,
       amount: Number(formData.amount),
-      id: uuidv4()
+      id: uuidv4(),
     };
     if (!transaction.amount || !transaction.category) return;
     setOpen(true);
     createTransaction(transaction);
     setFormData(initialState);
-  }
+  };
 
-  const selectedCategory = formData.type === 'Income' ? incomeCategories : expenseCategories;
+  const selectedCategory =
+    formData.type === 'Income' ? incomeCategories : expenseCategories;
 
   return (
-    <Grid container spacing={2} >
-      <Snackbar open={open} setOpen={setOpen} message="Transaction successfully created." type="success" />
-      <Grid item xs={12} >
+    <Grid container spacing={2}>
+      <Snackbar
+        open={open}
+        setOpen={setOpen}
+        message="Transaction successfully created."
+        type="success"
+      />
+      <Grid item xs={12}>
         <Typography
           align="center"
           variant="subtitle2"
           gutterBottom
-        >
-        </Typography>
+        ></Typography>
       </Grid>
       <Grid item xs={6}>
         <FormControl fullWidth>
           <InputLabel>Type</InputLabel>
           <Select
             value={formData.type}
-            onChange={e => setFormData({...formData, type: e.target.value})}
+            onChange={e => setFormData({ ...formData, type: e.target.value })}
           >
             <MenuItem value="Income">Income</MenuItem>
             <MenuItem value="Expense">Expense</MenuItem>
@@ -67,13 +77,19 @@ const Form = () => {
         </FormControl>
       </Grid>
       <Grid item xs={6}>
-        <FormControl fullWidth >
+        <FormControl fullWidth>
           <InputLabel>Category</InputLabel>
           <Select
             value={formData.category}
-            onChange={e => setFormData({...formData, category: e.target.value})}
+            onChange={e =>
+              setFormData({ ...formData, category: e.target.value })
+            }
           >
-            { selectedCategory.map((c, index) => <MenuItem key={index} value={c.type}>{c.type}</MenuItem>) }
+            {selectedCategory.map((c, index) => (
+              <MenuItem key={index} value={c.type}>
+                {c.type}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Grid>
@@ -83,7 +99,7 @@ const Form = () => {
           label="Amount"
           fullWidth
           value={formData.amount}
-          onChange={e => setFormData({...formData, amount: e.target.value})}
+          onChange={e => setFormData({ ...formData, amount: e.target.value })}
         />
       </Grid>
       <Grid item xs={6}>
@@ -92,7 +108,9 @@ const Form = () => {
           label="Date"
           fullWidth
           value={formData.date}
-          onChange={e => setFormData({...formData, date: formatDate(e.target.value)})}
+          onChange={e =>
+            setFormData({ ...formData, date: formatDate(e.target.value) })
+          }
         />
       </Grid>
       <Button
@@ -101,9 +119,11 @@ const Form = () => {
         color="primary"
         fullWidth
         onClick={addTransaction}
-      >Create</Button>
+      >
+        Create
+      </Button>
     </Grid>
-  )
-}
+  );
+};
 
 export default Form;

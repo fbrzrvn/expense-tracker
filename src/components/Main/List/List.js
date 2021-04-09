@@ -7,13 +7,15 @@ import {
   Avatar,
   ListItemSecondaryAction,
   IconButton,
-  Slide } from '@material-ui/core';
+  Slide,
+} from '@material-ui/core';
 import { Delete, MoneyOff } from '@material-ui/icons';
+
 import { ExpenseTrackerContext } from '../../../context/context';
+
 import useStyles from './styles';
 
 const List = () => {
-
   const classes = useStyles();
   const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
 
@@ -30,7 +32,12 @@ const List = () => {
           <ListItem>
             <ListItemAvatar>
               <Avatar
-                className={transaction.type === "Income" ? classes.avatarIncome : classes.avatarExpense}>
+                className={
+                  transaction.type === 'Income'
+                    ? classes.avatarIncome
+                    : classes.avatarExpense
+                }
+              >
                 <MoneyOff />
               </Avatar>
             </ListItemAvatar>
@@ -38,7 +45,7 @@ const List = () => {
               primary={transaction.category}
               secondary={`$${transaction.amount} - ${transaction.date}`}
             />
-            <ListItemSecondaryAction >
+            <ListItemSecondaryAction>
               <IconButton
                 edge="end"
                 aria-label="delete"
@@ -51,7 +58,7 @@ const List = () => {
         </Slide>
       ))}
     </MUIList>
-  )
-}
+  );
+};
 
 export default List;
