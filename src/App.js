@@ -1,5 +1,5 @@
+import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
-import { Grid } from '@material-ui/core';
 import Details from './components/Details/Details';
 import Main from './components/Main/Main';
 import useStyles from './styles';
@@ -15,6 +15,7 @@ const App = () => {
       alignItems="center"
       justify="center"
     >
+      <Typography variant="h2">Expense Tracker</Typography>
       <Grid container justify="space-around">
         <Grid item xs={12} sm={10} md={4} className={classes.main}>
           <Main />
