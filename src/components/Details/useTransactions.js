@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { ExpenseTrackerContext } from '../../context/context';
 import {
-  incomeCategories,
   expenseCategories,
+  incomeCategories,
   resetCategories,
 } from '../../constants/categories';
+import { ExpenseTrackerContext } from '../../context/context';
 
 const useTransactions = title => {
   resetCategories();

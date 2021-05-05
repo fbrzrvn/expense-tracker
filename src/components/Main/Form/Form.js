@@ -1,24 +1,22 @@
+import {
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import React, { useContext, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import {
-  TextField,
-  Typography,
-  Grid,
-  Button,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-} from '@material-ui/core';
-
-import { ExpenseTrackerContext } from '../../../context/context';
-import {
-  incomeCategories,
   expenseCategories,
+  incomeCategories,
 } from '../../../constants/categories';
-import formatDate from '../../../helpers/formatDate';
+import { ExpenseTrackerContext } from '../../../context/context';
+import { formatDate, formatListDate } from '../../../helpers/formatDate';
 import Snackbar from '../../Snackbar/Snackbar';
-
 import useStyles from './styles';
 
 const initialState = {
@@ -37,6 +35,7 @@ const Form = () => {
   const addTransaction = () => {
     const transaction = {
       ...formData,
+      date: formatListDate(formData.date),
       amount: Number(formData.amount),
       id: uuidv4(),
     };
@@ -108,9 +107,7 @@ const Form = () => {
           label="Date"
           fullWidth
           value={formData.date}
-          onChange={e =>
-            setFormData({ ...formData, date: formatDate(e.target.value) })
-          }
+          onChange={e => setFormData({ ...formData, date: e.target.value })}
         />
       </Grid>
       <Button

@@ -1,7 +1,5 @@
-import React, { useReducer, createContext } from 'react';
-
+import React, { createContext, useReducer } from 'react';
 import { CREATE, DELETE } from '../constants/actionTypes';
-
 import contextReducer from './contextReducer';
 
 const initialState = JSON.parse(localStorage.getItem('transactions')) || [];
