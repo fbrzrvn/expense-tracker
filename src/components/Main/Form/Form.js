@@ -15,7 +15,7 @@ import {
   incomeCategories,
 } from '../../../constants/categories';
 import { ExpenseTrackerContext } from '../../../context/context';
-import { formatDate, formatListDate } from '../../../helpers/formatDate';
+import { formatDate } from '../../../helpers/formatDate';
 import Snackbar from '../../Snackbar/Snackbar';
 import useStyles from './styles';
 
@@ -35,7 +35,7 @@ const Form = () => {
   const addTransaction = () => {
     const transaction = {
       ...formData,
-      date: formatListDate(formData.date),
+      date: formatDate(formData.date, 'list'),
       amount: Number(formData.amount),
       id: uuidv4(),
     };
