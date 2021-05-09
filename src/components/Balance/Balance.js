@@ -1,8 +1,9 @@
-import Link from '@material-ui/core/Link';
+import { Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import React from 'react';
-import Title from './Title';
+import React, { useContext } from 'react';
+import { ExpenseTrackerContext } from '../../context/context';
+import { formatCurrentDate } from '../../helpers/formatDate';
+import Title from '../Title';
 
 function preventDefault(event) {
   event.preventDefault();
@@ -14,22 +15,27 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+const Balance = () => {
+  const { balance } = useContext(ExpenseTrackerContext);
+  const date = formatCurrentDate(new Date());
   const classes = useStyles();
+
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
+      <Title>Balance</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+        {balance} €
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
+        on {date}
       </Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
+          View statistics
         </Link>
       </div>
     </React.Fragment>
   );
-}
+};
+
+export default Balance;

@@ -1,7 +1,7 @@
+import { green, red } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
-import { red, green } from '@material-ui/core/colors';
 
-export default makeStyles((theme) => ({
+export default makeStyles(theme => ({
   avatarIncome: {
     color: '#fff',
     backgroundColor: green[500],
@@ -10,8 +10,7 @@ export default makeStyles((theme) => ({
     color: theme.palette.getContrastText(red[500]),
     backgroundColor: red[500],
   },
-  list: {
-    maxHeight: '150px',
-    overflow: 'auto',
+  seeMore: {
+    marginTop: theme.spacing(3),
   },
 }));

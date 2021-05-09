@@ -12,3 +12,13 @@ export const formatDate = (date, type = null) => {
   }
   return (date = [year, month, day].join('-'));
 };
+
+export const formatCurrentDate = date => {
+  const options = {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  };
+  return (date = date.toLocaleDateString('en-GB', options));
+};
