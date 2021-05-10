@@ -1,33 +1,23 @@
-import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
-import Details from './components/Details/Details';
-import Main from './components/Main/Main';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import Reports from './pages/Reports';
+import Setting from './pages/Setting';
 import useStyles from './styles';
 
 const App = () => {
   const classes = useStyles();
 
   return (
-    <Grid
-      container
-      className={classes.grid}
-      spacing={0}
-      alignItems="center"
-      justify="center"
-    >
-      <Typography variant="h2">Expense Tracker</Typography>
-      <Grid container justify="space-around">
-        <Grid item xs={12} sm={10} md={4} className={classes.main}>
-          <Main />
-        </Grid>
-        <Grid item xs={12} sm={5} md={3} className={classes.mobile}>
-          <Details title="Income" />
-        </Grid>
-        <Grid item xs={12} sm={5} md={3} className={classes.last}>
-          <Details title="Expense" />
-        </Grid>
-      </Grid>
-    </Grid>
+    <BrowserRouter>
+      <div className={classes.root}>
+        <Switch>
+          <Route path="/setting" component={Setting} />
+          <Route path="/reports" component={Reports} />
+          <Route path="/" component={Dashboard} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 };
 

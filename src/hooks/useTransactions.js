@@ -3,8 +3,8 @@ import {
   expenseCategories,
   incomeCategories,
   resetCategories,
-} from '../../constants/categories';
-import { ExpenseTrackerContext } from '../../context/context';
+} from '../constants/categories';
+import { ExpenseTrackerContext } from '../context/context';
 
 const useTransactions = title => {
   resetCategories();

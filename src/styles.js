@@ -1,27 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
-  main: {
-    background: theme.palette.background.paper,
-    [theme.breakpoints.up('sm')]: {
-      paddingBottom: '5%',
-    },
+  root: {
+    display: 'flex',
   },
-  mobile: {
-    [theme.breakpoints.down('xs')]: {
-      margin: '5% 0',
-    },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
   },
-  last: {
+  fixedHeight: {
+    height: 250,
     [theme.breakpoints.down('sm')]: {
-      marginBottom: theme.spacing(3),
-      paddingBottom: '200px',
-    },
-  },
-  grid: {
-    paddingTop: '100px',
-    '& > *': {
-      margin: theme.spacing(2),
+      height: '100%',
     },
   },
 }));
