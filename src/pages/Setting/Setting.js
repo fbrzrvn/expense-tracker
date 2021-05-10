@@ -2,7 +2,7 @@ import { Grid, Paper } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
 import MainLayout from '../../layout/MainLayout';
-import useStyles from '../styles';
+import useStyles from '../../styles';
 
 const Setting = () => {
   const classes = useStyles();

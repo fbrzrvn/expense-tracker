@@ -5,7 +5,7 @@ import Balance from '../../components/Balance';
 import Form from '../../components/Form';
 import Transactions from '../../components/Transactions';
 import MainLayout from '../../layout/MainLayout';
-import useStyles from '../styles';
+import useStyles from '../../styles';
 
 const Dashboard = () => {
   const classes = useStyles();

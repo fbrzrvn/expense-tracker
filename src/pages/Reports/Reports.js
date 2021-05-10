@@ -2,7 +2,7 @@ import { Grid, Paper } from '@material-ui/core';
 import React from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
 import MainLayout from '../../layout/MainLayout';
-import useStyles from '../styles';
+import useStyles from '../../styles';
 
 const Reports = () => {
   const classes = useStyles();
