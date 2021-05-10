@@ -1,13 +1,10 @@
 import { Grid, Paper } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
-import Balance from '../../components/Balance';
-import Form from '../../components/Form';
-import Transactions from '../../components/Transactions';
 import MainLayout from '../../layout/MainLayout';
 import useStyles from '../styles';
 
-const Dashboard = () => {
+const Setting = () => {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -17,24 +14,20 @@ const Dashboard = () => {
         {/* Form */}
         <Grid item xs={12} md={8} lg={9}>
           <Paper className={fixedHeightPaper}>
-            <Form />
+            <h1>Setting</h1>
           </Paper>
         </Grid>
         {/* Balance */}
         <Grid item xs={12} md={4} lg={3}>
-          <Paper className={fixedHeightPaper}>
-            <Balance />
-          </Paper>
+          <Paper className={fixedHeightPaper}></Paper>
         </Grid>
         {/* Recent Orders */}
         <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <Transactions />
-          </Paper>
+          <Paper className={classes.paper}></Paper>
         </Grid>
       </Grid>
     </MainLayout>
   );
 };
 
-export default Dashboard;
+export default Setting;
