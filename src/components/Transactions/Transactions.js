@@ -1,7 +1,6 @@
 import {
   Avatar,
   IconButton,
-  Link,
   Table,
   TableBody,
   TableCell,
@@ -10,18 +9,15 @@ import {
 } from '@material-ui/core';
 import { Delete, MoneyOff } from '@material-ui/icons';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ExpenseTrackerContext } from '../../context/context';
 import Title from '../Title';
 import useStyles from './styles';
 
-function preventDefault(event) {
-  event.preventDefault();
-}
-
 const Transactions = () => {
   const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
   const classes = useStyles();
-  return (
+  return transactions.lenght > 0 ? (
     <React.Fragment>
       <Title>Recent Transactions</Title>
       <Table size="small">
@@ -36,7 +32,7 @@ const Transactions = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {transactions.map(transaction => (
+          {transactions.slice(0, 5).map(transaction => (
             <TableRow key={transaction.id}>
               <TableCell>
                 <Avatar
@@ -66,12 +62,15 @@ const Transactions = () => {
           ))}
         </TableBody>
       </Table>
+
       <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          See more orders
+        <Link to="/all-transactions" className={classes.link}>
+          See all transactions
         </Link>
       </div>
     </React.Fragment>
+  ) : (
+    <Title>Start adding your transaction in order to keep track of them!</Title>
   );
 };
 

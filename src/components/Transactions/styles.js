@@ -1,4 +1,4 @@
-import { green, red } from '@material-ui/core/colors';
+import { green, indigo, red } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
@@ -12,5 +12,9 @@ export default makeStyles(theme => ({
   },
   seeMore: {
     marginTop: theme.spacing(3),
+  },
+  link: {
+    textDecoration: 'none',
+    color: indigo[500],
   },
 }));

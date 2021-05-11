@@ -8,6 +8,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SettingsIcon from '@material-ui/icons/Settings';
+import SwapVertIcon from '@material-ui/icons/SwapVert';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -24,6 +25,12 @@ export const mainListItems = (
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Reports" />
+    </ListItem>
+    <ListItem button component={Link} to="/all-transactions">
+      <ListItemIcon>
+        <SwapVertIcon />
+      </ListItemIcon>
+      <ListItemText primary="Transactions" />
     </ListItem>
     <ListItem button component={Link} to="/setting">
       <ListItemIcon>
