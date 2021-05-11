@@ -32,7 +32,7 @@ const useTransactions = title => {
   // get all the category with amount +0
   const filteredCategories = categories.filter(sc => sc.amount > 0);
   // set data for chart
-  const chartData = {
+  const doughnutChartData = {
     datasets: [
       {
         data: filteredCategories.map(c => c.amount),
@@ -42,7 +42,7 @@ const useTransactions = title => {
     labels: filteredCategories.map(c => c.type),
   };
 
-  return { filteredCategories, total, chartData };
+  return { filteredCategories, total, doughnutChartData };
 };
 
 export default useTransactions;

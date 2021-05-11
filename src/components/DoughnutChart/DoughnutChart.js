@@ -5,7 +5,7 @@ import useTransactions from '../../hooks/useTransactions';
 import useStyles from './styles';
 
 const DoughnutChart = ({ title }) => {
-  const { total, chartData } = useTransactions(title);
+  const { total, doughnutChartData } = useTransactions(title);
   const classes = useStyles();
 
   return (
@@ -13,7 +13,7 @@ const DoughnutChart = ({ title }) => {
       <CardHeader title={title} />
       <CardContent>
         <Typography variant="h5">${total}</Typography>
-        <Doughnut data={chartData} />
+        <Doughnut data={doughnutChartData} />
       </CardContent>
     </Card>
   );
