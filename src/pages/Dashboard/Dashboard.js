@@ -1,13 +1,15 @@
 import { Grid, Paper } from '@material-ui/core';
 import clsx from 'clsx';
-import React from 'react';
+import React, { useContext } from 'react';
 import Balance from '../../components/Balance';
 import Form from '../../components/Form';
 import Transactions from '../../components/Transactions';
+import { ExpenseTrackerContext } from '../../context/context';
 import MainLayout from '../../layout/MainLayout';
 import useStyles from '../../styles';
 
 const Dashboard = () => {
+  const { transactions } = useContext(ExpenseTrackerContext);
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -29,7 +31,7 @@ const Dashboard = () => {
         {/* Recent Orders */}
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Transactions />
+            <Transactions transactions={transactions.slice(0, 5)} />
           </Paper>
         </Grid>
       </Grid>

@@ -14,10 +14,11 @@ import { ExpenseTrackerContext } from '../../context/context';
 import Title from '../Title';
 import useStyles from './styles';
 
-const Transactions = () => {
-  const { deleteTransaction, transactions } = useContext(ExpenseTrackerContext);
+const Transactions = ({ transactions }) => {
+  const { deleteTransaction } = useContext(ExpenseTrackerContext);
   const classes = useStyles();
-  return transactions.lenght > 0 ? (
+
+  return (
     <React.Fragment>
       <Title>Recent Transactions</Title>
       <Table size="small">
@@ -32,7 +33,7 @@ const Transactions = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {transactions.slice(0, 5).map(transaction => (
+          {transactions.map(transaction => (
             <TableRow key={transaction.id}>
               <TableCell>
                 <Avatar
@@ -69,8 +70,6 @@ const Transactions = () => {
         </Link>
       </div>
     </React.Fragment>
-  ) : (
-    <Title>Start adding your transaction in order to keep track of them!</Title>
   );
 };
 
