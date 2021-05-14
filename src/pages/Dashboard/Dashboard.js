@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import React, { useContext } from 'react';
 import Balance from '../../components/Balance';
 import Form from '../../components/Form';
+import Link from '../../components/Link';
 import Transactions from '../../components/Transactions';
 import { ExpenseTrackerContext } from '../../context/context';
 import MainLayout from '../../layout/MainLayout';
@@ -32,6 +33,7 @@ const Dashboard = () => {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Transactions transactions={transactions.slice(0, 5)} />
+            <Link goTo="/all-transactions" label="See all transactions" />
           </Paper>
         </Grid>
       </Grid>

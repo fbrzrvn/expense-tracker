@@ -9,7 +9,6 @@ import {
 } from '@material-ui/core';
 import { Delete, MoneyOff } from '@material-ui/icons';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { ExpenseTrackerContext } from '../../context/context';
 import Title from '../Title';
 import useStyles from './styles';
@@ -63,12 +62,6 @@ const Transactions = ({ transactions }) => {
           ))}
         </TableBody>
       </Table>
-
-      <div className={classes.seeMore}>
-        <Link to="/all-transactions" className={classes.link}>
-          See all transactions
-        </Link>
-      </div>
     </React.Fragment>
   );
 };
