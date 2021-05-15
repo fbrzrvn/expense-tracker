@@ -48,6 +48,14 @@ export const expenseCategories = [
   { type: 'Other', amount: 0, color: expenseColor[0] },
 ];
 
+export const INCOME = 'Income';
+export const EXPENSE = 'Expense';
+
+export const totalTypes = [
+  { type: INCOME, amount: 0, color: incomeColor[9] },
+  { type: EXPENSE, amount: 0, color: expenseColor[9] },
+];
+
 export const resetCategories = () => {
   incomeCategories.forEach(c => (c.amount = 0));
   expenseCategories.forEach(c => (c.amount = 0));

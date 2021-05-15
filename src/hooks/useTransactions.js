@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import {
   expenseCategories,
+  INCOME,
   incomeCategories,
   resetCategories,
 } from '../constants/categories';
@@ -17,7 +18,8 @@ const useTransactions = title => {
     (acc, item) => (acc += item.amount),
     0
   );
-  const categories = title === 'Income' ? incomeCategories : expenseCategories;
+  // Set category based on type of transactions
+  const categories = title === INCOME ? incomeCategories : expenseCategories;
 
   transactionPerType.forEach(transaction => {
     // find the transaction === to the title(income | expense)

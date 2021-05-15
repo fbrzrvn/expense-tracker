@@ -1,12 +1,10 @@
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import React from 'react';
 import DoughnutChart from '../../components/DoughnutChart';
+import PieChart from '../../components/PieChart';
 import MainLayout from '../../layout/MainLayout';
-import useStyles from '../../styles';
 
 const Reports = () => {
-  const classes = useStyles();
-
   return (
     <MainLayout>
       <Grid container spacing={3}>
@@ -20,7 +18,7 @@ const Reports = () => {
         </Grid>
         {/* Balance Chart */}
         <Grid item xs={12}>
-          <Paper className={classes.paper}></Paper>
+          <PieChart />
         </Grid>
       </Grid>
     </MainLayout>
