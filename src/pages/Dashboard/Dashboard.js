@@ -4,7 +4,8 @@ import React, { useContext } from 'react';
 import Balance from '../../components/Balance';
 import Form from '../../components/Form';
 import Link from '../../components/Link';
-import Transactions from '../../components/Transactions';
+import Title from '../../components/Title';
+import TransTable from '../../components/TransTable';
 import { ExpenseTrackerContext } from '../../context/context';
 import MainLayout from '../../layout/MainLayout';
 import useStyles from '../../styles';
@@ -29,10 +30,11 @@ const Dashboard = () => {
             <Balance />
           </Paper>
         </Grid>
-        {/* Recent Orders */}
+        {/* Recent Transactions */}
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Transactions transactions={transactions.slice(0, 5)} />
+            <Title>Recent Transanctions</Title>
+            <TransTable transactions={transactions.slice(0, 5)} />
             <Link goTo="/transactions" label="See all transactions" />
           </Paper>
         </Grid>

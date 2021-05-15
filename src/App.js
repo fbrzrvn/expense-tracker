@@ -4,7 +4,7 @@ import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import Setting from './pages/Setting';
 import Statistics from './pages/Statistics';
-import TransactionsList from './pages/TransactionsList';
+import Transactions from './pages/Transactions';
 import * as ROUTES from './routes';
 import useStyles from './styles';
 
@@ -18,7 +18,7 @@ const App = () => {
           <Route path={ROUTES.AUTH} component={Auth} />
           <Route path={ROUTES.SETTING} component={Setting} />
           <Route path={ROUTES.STATISTICS} component={Statistics} />
-          <Route path={ROUTES.TRANSACTIONS} component={TransactionsList} />
+          <Route path={ROUTES.TRANSACTIONS} component={Transactions} />
           <Route path={ROUTES.HOME} component={Dashboard} exact />
         </Switch>
       </div>
