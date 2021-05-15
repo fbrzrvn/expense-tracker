@@ -33,7 +33,7 @@ const Dashboard = () => {
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Transactions transactions={transactions.slice(0, 5)} />
-            <Link goTo="/all-transactions" label="See all transactions" />
+            <Link goTo="/transactions" label="See all transactions" />
           </Paper>
         </Grid>
       </Grid>

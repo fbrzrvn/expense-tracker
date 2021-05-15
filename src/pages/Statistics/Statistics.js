@@ -4,7 +4,7 @@ import DoughnutChart from '../../components/DoughnutChart';
 import PieChart from '../../components/PieChart';
 import MainLayout from '../../layout/MainLayout';
 
-const Reports = () => {
+const Statistics = () => {
   return (
     <MainLayout>
       <Grid container spacing={3}>
@@ -25,4 +25,4 @@ const Reports = () => {
   );
 };
 
-export default Reports;
+export default Statistics;

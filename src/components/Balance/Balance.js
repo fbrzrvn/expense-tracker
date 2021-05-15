@@ -20,7 +20,7 @@ const Balance = () => {
       <Typography color="textSecondary" className={classes.depositContext}>
         on {date}
       </Typography>
-      <Link goTo="/reports" label="View statistics" />
+      <Link goTo="/statistics" label="View statistics" />
     </React.Fragment>
   );
 };
