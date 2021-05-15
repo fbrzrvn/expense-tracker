@@ -8,7 +8,8 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { useState } from 'react';
-import Link from '../Link';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../routes';
 import GoogleIcon from './GoogleIcon';
 import Input from './Input';
 import useStyle from './styles';
@@ -97,6 +98,15 @@ const AuthForm = () => {
                 type="password"
               />
             )}
+            {!isSignUp && (
+              <Link
+                to={ROUTES.RESET_PASSWORD}
+                variant="body2"
+                className={classes.link}
+              >
+                Forgot password?
+              </Link>
+            )}
           </Grid>
           <Button
             type="submit"
@@ -111,18 +121,13 @@ const AuthForm = () => {
             variant="contained"
             color="secondary"
             fullWidth
-            onClick=""
-            disabled=""
+            onClick={() => {}}
+            disabled={false}
             startIcon={<GoogleIcon />}
             className={classes.googleButton}
           >
             {isSignUp ? 'Sign Up with Google' : 'Sign In with Google'}
           </Button>
-          <Grid container>
-            <Grid item xs className={classes.link}>
-              <Link goTo="#" variant="body2" label="Forgot password?" />
-            </Grid>
-          </Grid>
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>

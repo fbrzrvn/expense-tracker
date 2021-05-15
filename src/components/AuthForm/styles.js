@@ -1,3 +1,4 @@
+import { indigo } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(theme => ({
@@ -21,13 +22,16 @@ export default makeStyles(theme => ({
     width: '100%',
     marginTop: theme.spacing(3),
   },
+  link: {
+    padding: theme.spacing(0, 1),
+    textDecoration: 'none',
+    fontSize: '14px',
+    color: indigo[500],
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
   googleButton: {
-    marginBottom: theme.spacing(2),
-  },
-  link: {
     marginBottom: theme.spacing(2),
   },
 }));
