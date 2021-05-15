@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import Reports from './pages/Reports';
 import Setting from './pages/Setting';
@@ -13,6 +14,7 @@ const App = () => {
     <BrowserRouter>
       <div className={classes.root}>
         <Switch>
+          <Route path="/auth" component={Auth} />
           <Route path="/all-transactions" component={TransactionsList} />
           <Route path="/setting" component={Setting} />
           <Route path="/reports" component={Reports} />
