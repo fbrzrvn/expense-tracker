@@ -7,8 +7,14 @@ import {
   Typography,
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import {
+  resetAuthState,
+  signUpWithGoogle,
+} from '../../redux/auth/auth-actions';
+import { authSelector } from '../../redux/auth/auth-selector';
 import * as ROUTES from '../../routes';
 import GoogleIcon from './GoogleIcon';
 import Input from './Input';
@@ -22,8 +28,24 @@ const initialState = {
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  const { isSigningUp, signUpError, isAuthenticated } =
+    useSelector(authSelector);
 
   const classes = useStyle();
+
+  useEffect(() => {
+    dispatch(resetAuthState());
+  }, [dispatch]);
+
+  if (isAuthenticated) {
+    return <Redirect to={ROUTES.HOME} />;
+  }
+
+  const handleLoginWithGoogle = e => {
+    e.preventDefault();
+    dispatch(signUpWithGoogle());
+  };
 
   const handleShowPassword = () => {
     setShowPassword(prevShoWPassword => !prevShoWPassword);
@@ -86,8 +108,8 @@ const SignInForm = () => {
             variant="contained"
             color="secondary"
             fullWidth
-            onClick={() => {}}
-            disabled={false}
+            onClick={handleLoginWithGoogle}
+            disabled={isSigningUp}
             startIcon={<GoogleIcon />}
             className={classes.googleButton}
           >
@@ -101,6 +123,11 @@ const SignInForm = () => {
             </Grid>
           </Grid>
         </form>
+        {signUpError && (
+          <Grid container spacing={2}>
+            {signUpError}
+          </Grid>
+        )}
       </Paper>
     </Container>
   );
