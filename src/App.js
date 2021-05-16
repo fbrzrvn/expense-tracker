@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Auth from './pages/Auth';
+import { SignIn, SignUp } from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import ResetPassword from './pages/ResetPassword';
 import Setting from './pages/Setting';
@@ -16,7 +16,8 @@ const App = () => {
     <BrowserRouter>
       <div className={classes.root}>
         <Switch>
-          <Route path={ROUTES.AUTH} component={Auth} />
+          <Route path={ROUTES.SIGN_UP} component={SignUp} />
+          <Route path={ROUTES.SIGN_IN} component={SignIn} />
           <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
           <Route path={ROUTES.SETTING} component={Setting} />
           <Route path={ROUTES.STATISTICS} component={Statistics} />

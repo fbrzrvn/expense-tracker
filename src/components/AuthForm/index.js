@@ -1,3 +1,7 @@
-import AuthForm from './AuthForm';
+// import AuthForm from './AuthForm';
+import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
 
-export default AuthForm;
+export { SignInForm, SignUpForm };
+
+// export default AuthForm;

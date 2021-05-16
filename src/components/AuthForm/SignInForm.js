@@ -15,16 +15,12 @@ import Input from './Input';
 import useStyle from './styles';
 
 const initialState = {
-  firstName: '',
-  lastName: '',
   email: '',
   password: '',
-  confirmPassword: '',
 };
 
-const AuthForm = () => {
+const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState(initialState);
 
   const classes = useStyle();
@@ -44,11 +40,6 @@ const AuthForm = () => {
     });
   };
 
-  const switchMode = () => {
-    setIsSignUp(prevIsSignUp => !prevIsSignUp);
-    setShowPassword(false);
-  };
-
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
@@ -56,27 +47,10 @@ const AuthForm = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          {isSignUp ? 'Sign Up' : 'Sign In'}
+          Sign In
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
-            {isSignUp && (
-              <>
-                <Input
-                  name="firstName"
-                  label="First Name"
-                  handleChange={handleChange}
-                  autoFocus
-                  half
-                />
-                <Input
-                  name="lastName"
-                  label="Last Name"
-                  handleChange={handleChange}
-                  half
-                />
-              </>
-            )}
             <Input
               name="email"
               label="Email Address"
@@ -90,23 +64,14 @@ const AuthForm = () => {
               type={showPassword ? 'text' : 'password'}
               handleShowPassword={handleShowPassword}
             />
-            {isSignUp && (
-              <Input
-                name="confirmPassword"
-                label="Repeat Password"
-                handleChange={handleChange}
-                type="password"
-              />
-            )}
-            {!isSignUp && (
-              <Link
-                to={ROUTES.RESET_PASSWORD}
-                variant="body2"
-                className={classes.link}
-              >
-                Forgot password?
-              </Link>
-            )}
+
+            <Link
+              to={ROUTES.RESET_PASSWORD}
+              variant="body2"
+              className={classes.link}
+            >
+              Forgot password?
+            </Link>
           </Grid>
           <Button
             type="submit"
@@ -115,7 +80,7 @@ const AuthForm = () => {
             color="primary"
             fullWidth
           >
-            {isSignUp ? 'Sign Up' : 'Sign In'}
+            Sign In
           </Button>
           <Button
             variant="contained"
@@ -126,14 +91,12 @@ const AuthForm = () => {
             startIcon={<GoogleIcon />}
             className={classes.googleButton}
           >
-            {isSignUp ? 'Sign Up with Google' : 'Sign In with Google'}
+            Sign In with Google
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Button onClick={switchMode}>
-                {isSignUp
-                  ? 'Already have an account? Sign In'
-                  : "Don't have an account? Sign Up"}
+              <Button component={Link} to={ROUTES.SIGN_UP}>
+                Don't have an account? Sign Up
               </Button>
             </Grid>
           </Grid>
@@ -143,4 +106,4 @@ const AuthForm = () => {
   );
 };
 
-export default AuthForm;
+export default SignInForm;
