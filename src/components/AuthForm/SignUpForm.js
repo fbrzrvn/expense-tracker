@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import {
   resetAuthState,
+  signUp,
   signUpWithGoogle,
 } from '../../redux/auth/auth-actions';
 import { authSelector } from '../../redux/auth/auth-selector';
@@ -52,6 +53,7 @@ const SignUpForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch(signUp(formData));
   };
 
   const handleChange = e => {

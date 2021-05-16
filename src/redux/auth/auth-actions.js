@@ -10,19 +10,23 @@ export const signUpError = message => ({
   payload: message,
 });
 
-export const signUp = (email, password) => async dispatch => {
+export const signUp = formData => async dispatch => {
   dispatch(signUpRequest());
   try {
-    await auth.singUpWithEmailAndPassword(email, password);
+    const { email, password } = formData;
+    const user = await auth.singUpWithEmailAndPassword(email, password);
+    dispatch(signUpSuccess(user.user));
   } catch (error) {
     dispatch(signUpError(error.message));
   }
 };
 
-export const signIn = (email, password) => async dispatch => {
+export const signIn = formData => async dispatch => {
   dispatch(signUpRequest());
   try {
-    await auth.singInWithEmailAndPassword(email, password);
+    const { email, password } = formData;
+    const user = await auth.singInWithEmailAndPassword(email, password);
+    dispatch(signUpSuccess(user.user));
   } catch (error) {
     dispatch(signUpError(error.message));
   }
@@ -33,7 +37,6 @@ export const signUpWithGoogle = () => async dispatch => {
   try {
     const user = await auth.singInWithGoogle();
     dispatch(signUpSuccess(user.additionalUserInfo.profile));
-    console.log(user.additionalUserInfo.profile);
   } catch (error) {
     dispatch(signUpError(error.message));
   }

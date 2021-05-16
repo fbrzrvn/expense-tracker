@@ -9,11 +9,14 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import AuthLayout from '../../layout/AuthLayout';
+import { sendPasswordResetEmail } from '../../redux/auth/auth-actions';
 import useStyle from './styles';
 
 const ResetPassword = () => {
   const [email, setEmail] = useState('');
+  const dispatch = useDispatch();
   const classes = useStyle();
 
   const handleSetEmail = e => {
@@ -22,7 +25,7 @@ const ResetPassword = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // dispatch(sendPasswordResetEmail(email));
+    dispatch(sendPasswordResetEmail(email));
     setEmail('');
   };
 

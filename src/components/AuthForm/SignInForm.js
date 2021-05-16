@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import {
   resetAuthState,
+  signIn,
   signUpWithGoogle,
 } from '../../redux/auth/auth-actions';
 import { authSelector } from '../../redux/auth/auth-selector';
@@ -53,6 +54,7 @@ const SignInForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch(signIn(formData));
   };
 
   const handleChange = e => {
@@ -115,6 +117,11 @@ const SignInForm = () => {
           >
             Sign In with Google
           </Button>
+          {signUpError && (
+            <Grid container spacing={2}>
+              {signUpError}
+            </Grid>
+          )}
           <Grid container justify="flex-end">
             <Grid item>
               <Button component={Link} to={ROUTES.SIGN_UP}>
@@ -123,11 +130,6 @@ const SignInForm = () => {
             </Grid>
           </Grid>
         </form>
-        {signUpError && (
-          <Grid container spacing={2}>
-            {signUpError}
-          </Grid>
-        )}
       </Paper>
     </Container>
   );

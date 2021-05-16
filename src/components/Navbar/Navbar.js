@@ -68,14 +68,14 @@ const Navbar = ({ open, setOpen }) => {
         <div>
           <IconButton color="inherit" onClick={handleMenu}>
             <Typography className={classes.username} variant="h6">
-              {currentUser.name}
+              {currentUser.name || currentUser.email}
             </Typography>
             <Avatar
               className={classes.purple}
               src={currentUser.picture}
               alt={currentUser.name}
             >
-              {currentUser.name.charAt(0)}
+              {currentUser.email.charAt(0).toUpperCase()}
             </Avatar>
           </IconButton>
           <Menu
