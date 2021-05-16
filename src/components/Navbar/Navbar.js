@@ -2,19 +2,43 @@ import {
   AppBar,
   Avatar,
   IconButton,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { signOut } from '../../redux/auth/auth-actions';
+import { authSelector } from '../../redux/auth/auth-selector';
+import * as ROUTES from '../../routes';
 import useStyles from './styles';
 
 const Navbar = ({ open, setOpen }) => {
+  const { currentUser } = useSelector(authSelector);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openMenu = Boolean(anchorEl);
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   const handleDrawerOpen = () => {
     setOpen(true);
+  };
+
+  const handleMenu = e => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSignOut = () => {
+    handleClose();
+    dispatch(signOut());
   };
 
   return (
@@ -41,13 +65,40 @@ const Navbar = ({ open, setOpen }) => {
         >
           Expense Tracker App
         </Typography>
-        <IconButton color="inherit">
-          {/* <Typography className={classes.username} variant="h6">
-            faber
-          </Typography>
-          <Avatar className={classes.purple}>F</Avatar> */}
-          <Avatar />
-        </IconButton>
+        <div>
+          <IconButton color="inherit" onClick={handleMenu}>
+            <Typography className={classes.username} variant="h6">
+              {currentUser.name}
+            </Typography>
+            <Avatar
+              className={classes.purple}
+              src={currentUser.picture}
+              alt={currentUser.name}
+            >
+              {currentUser.name.charAt(0)}
+            </Avatar>
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={openMenu}
+            onClose={handleClose}
+          >
+            <Link to={ROUTES.PROFILE} className={classes.link}>
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+            </Link>
+            <MenuItem onClick={handleSignOut}>Logout</MenuItem>
+          </Menu>
+        </div>
       </Toolbar>
     </AppBar>
   );
