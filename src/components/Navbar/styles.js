@@ -41,6 +41,10 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  link: {
+    textDecoration: 'none',
+    color: 'inherit',
+  },
 }));
 
 export default useStyles;

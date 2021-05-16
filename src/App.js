@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
 import { SignIn, SignUp } from './pages/Auth';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 import ResetPassword from './pages/ResetPassword';
 import Setting from './pages/Setting';
 import Statistics from './pages/Statistics';
@@ -21,6 +22,7 @@ const App = () => {
           <Route path={ROUTES.SIGN_IN} component={SignIn} />
           <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
           <ProtectedRoute>
+            <Route path={ROUTES.PROFILE} component={Profile} />
             <Route path={ROUTES.SETTING} component={Setting} />
             <Route path={ROUTES.STATISTICS} component={Statistics} />
             <Route path={ROUTES.TRANSACTIONS} component={Transactions} />
