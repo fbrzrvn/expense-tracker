@@ -5,7 +5,6 @@ import { SignIn, SignUp } from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import ResetPassword from './pages/ResetPassword';
-import Setting from './pages/Setting';
 import Statistics from './pages/Statistics';
 import Transactions from './pages/Transactions';
 import * as ROUTES from './routes';
@@ -23,7 +22,6 @@ const App = () => {
           <Route path={ROUTES.RESET_PASSWORD} component={ResetPassword} />
           <ProtectedRoute>
             <Route path={ROUTES.PROFILE} component={Profile} />
-            <Route path={ROUTES.SETTING} component={Setting} />
             <Route path={ROUTES.STATISTICS} component={Statistics} />
             <Route path={ROUTES.TRANSACTIONS} component={Transactions} />
             <Route path={ROUTES.HOME} component={Dashboard} exact />

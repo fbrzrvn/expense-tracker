@@ -63,7 +63,7 @@ const Navbar = ({ open, setOpen }) => {
           noWrap
           className={classes.title}
         >
-          Expense Tracker App
+          Transaction Tracker App
         </Typography>
         <div>
           <IconButton color="inherit" onClick={handleMenu}>
